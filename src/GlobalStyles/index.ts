@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
+import { fonts } from "./fonts";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "rgba(21,24,28,1)",
     borderColor: "black",
-    padding: 24,
+    padding: 20,
+    paddingTop: 30,
   },
 
   button: {
@@ -19,11 +21,11 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   title: {
+    fontFamily: fonts.roboto700,
     alignSelf: "center",
     margin: 5,
     fontSize: 20,
     color: "#fff",
-    fontWeight: "bold",
   },
   picture: {
     alignSelf: "center",
@@ -32,6 +34,7 @@ export const styles = StyleSheet.create({
     width: 140,
   },
   content: {
+    fontFamily: fonts.roboto700,
     margin: 5,
     fontSize: 15,
     color: "#fff",
@@ -55,9 +58,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   name: {
+    fontFamily: fonts.roboto700,
     margin: 5,
     fontSize: 15,
     color: "#fff",
-    fontWeight: "bold",
   },
 });

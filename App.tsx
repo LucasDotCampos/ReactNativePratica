@@ -1,20 +1,20 @@
 import React from "react";
-import Weapons from "./src/screens/Weapons";
-import Loading from "expo-app-loading";
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto";
+import AppLoading from "expo-app-loading";
+import { Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
+import { Inter_700Bold, Inter_500Medium } from "@expo-google-fonts/inter";
+import { useFonts } from "expo-font";
+import { Routes } from "./src/routes";
 
 export default function App() {
-  const [loadedFont] = useFonts({
+  const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
+    Inter_500Medium,
+    Inter_700Bold,
   });
 
-  if (!loadedFont) {
-    return <Loading />;
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
-  return <Weapons />;
+  return <Routes />;
 }
