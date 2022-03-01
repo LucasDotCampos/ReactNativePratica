@@ -1,93 +1,20 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { View, FlatList, Text, Image } from "react-native";
-import { styles } from "./src/GlobalStyles";
-import { api } from "./src/services/api";
+import React from "react";
+import Weapons from "./src/screens/Weapons";
+import Loading from "expo-app-loading";
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
 
-interface Weapons {
-  id: string;
-  name: string;
-  ammo: string;
-  killAward: string;
-  damage: number;
-  firerate: number;
-  recoilControl: number;
-  accurateRange: string;
-  armorPenetration: number;
-  type: string;
-  side: string;
-  price: string;
-  picture: string;
-}
 export default function App() {
-  const [weapons, setWeapons] = useState<Weapons[]>([]);
+  const [loadedFont] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+  });
 
-  async function loadWeapons() {
-    const response = await api.get("/");
-    setWeapons(response.data);
+  if (!loadedFont) {
+    return <Loading />;
   }
-
-  useEffect(() => {
-    loadWeapons();
-  }, []);
-  return (
-    <View style={styles.container}>
-      <FlatList<Weapons>
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        data={weapons}
-        keyExtractor={(weapons) => weapons.id}
-        renderItem={({ item }) => {
-          return (
-            <View>
-              <View style={styles.border}>
-                <Text style={styles.title}>{item.name}</Text>
-                <Image style={styles.picture} source={{ uri: item.picture }} />
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Ammo</Text>
-                  <Text style={styles.content}>{item.ammo}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Kill award</Text>
-                  <Text style={styles.content}>{item.killAward}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Accurate Range</Text>
-                  <Text style={styles.content}>{item.accurateRange}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Armor Penetration</Text>
-                  <Text style={styles.content}>{item.armorPenetration}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Damage</Text>
-                  <Text style={styles.content}>{item.damage}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Firerate</Text>
-                  <Text style={styles.content}>{item.firerate}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Recoil Control</Text>
-                  <Text style={styles.content}>{item.recoilControl}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Side</Text>
-                  <Text style={styles.content}>{item.side.toLowerCase()}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Type</Text>
-                  <Text style={styles.content}>{item.type.toLowerCase()}</Text>
-                </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.name}>Price</Text>
-                  <Text style={styles.content}>{item.price}</Text>
-                </View>
-              </View>
-            </View>
-          );
-        }}
-      ></FlatList>
-    </View>
-  );
+  return <Weapons />;
 }

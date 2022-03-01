@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   title: {
     alignSelf: "center",
     margin: 5,
-    fontSize: 16,
+    fontSize: 20,
     color: "#fff",
     fontWeight: "bold",
   },
@@ -45,19 +45,19 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  border: {
+  card: {
     flex: 1,
-    backgroundColor: "rgb(30, 40, 182)",
-    borderWidth: 3,
+    backgroundColor: "rgba(0,0,0,0.2)",
+    borderWidth: 2,
     fontSize: 16,
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 6,
     marginBottom: 10,
   },
   name: {
     margin: 5,
     fontSize: 15,
-    color: "#000",
+    color: "#fff",
     fontWeight: "bold",
   },
 });
