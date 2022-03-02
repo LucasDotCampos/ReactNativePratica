@@ -3,6 +3,7 @@ import { useState } from "react";
 import { View, FlatList, Text, Image } from "react-native";
 import { styles } from "../../GlobalStyles";
 import { api } from "../../services/api";
+import AppLoading from "expo-app-loading";
 
 interface Weapons {
   id: string;
@@ -30,12 +31,15 @@ export default function Weapons() {
   useEffect(() => {
     loadWeapons();
   }, []);
+
   return (
     <View style={styles.container}>
       <FlatList<Weapons>
         showsVerticalScrollIndicator={false}
         data={weapons}
         keyExtractor={(weapons) => weapons.id}
+        initialNumToRender={1}
+        maxToRenderPerBatch={5}
         renderItem={({ item }) => {
           return (
             <View>

@@ -48,6 +48,14 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  avatar: {
+    position: "absolute",
+    alignSelf: "center",
+    width: "70%",
+    height: "40%",
+    top: 40,
+    borderRadius: 8,
+  },
   card: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.2)",
@@ -62,5 +70,18 @@ export const styles = StyleSheet.create({
     margin: 5,
     fontSize: 15,
     color: "#fff",
+  },
+  socialText: {
+    fontFamily: fonts.roboto700,
+    fontSize: 15,
+    color: "#fff",
+    margin: 1,
+  },
+  socialContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    top: 310,
   },
 });
